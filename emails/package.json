@@ -2,6 +2,10 @@
   "name": "email",
   "version": "1.0.0",
   "description": "Email templates for the Haunted Farm project",
+  "engines": {
+    "node": ">=20.12.0",
+    "npm": ">=9.6.0"
+  },
   "main": "index.js",
   "scripts": {
     "email:build:contact": "mjml ./src/*.mjml -o ./dist",

@@ -23,3 +23,6 @@ logs
 .env.*
 !.env.example
 !/content/stoicism/28.md
+
+# Local Netlify folder
+.netlify

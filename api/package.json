@@ -2,6 +2,10 @@
   "name": "andrewalba-api",
   "version": "1.0.0",
   "description": "API handler for the Andrew Alba Nuxt/Tailwind project",
+  "engines": {
+    "node": ">=20.12.0",
+    "npm": ">=9.6.0"
+  },
   "main": "handler.js",
   "scripts": {
     "deploy:production": "sls deploy --stage production",
