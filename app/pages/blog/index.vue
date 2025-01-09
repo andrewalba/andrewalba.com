@@ -27,7 +27,7 @@ const pubDate = (dateStr: string): string => {
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <template v-for="data in item.children" :key="data._path">
             <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
-              <NuxtImg
+              <img
                   :alt="data.description"
                   :src="data.backgroundImage"
                   class="h-56 w-full object-cover"
