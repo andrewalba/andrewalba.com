@@ -24,11 +24,6 @@ do {
 const pubDate = (dateStr: string): string => {
   return format(new Date(dateStr), "MMMM do, yyyy"); // "do" adds the ordinal suffix automatically
 }
-const buildLink = (dateStr: string): string => {
-  const month = startDate.getMonth() + 1;
-  const day = startDate.getDate();
-  return `/stoicism/${month}/${day}`;
-}
 </script>
 
 <template>
@@ -48,18 +43,24 @@ const buildLink = (dateStr: string): string => {
             />
 
             <div class="bg-white p-4 sm:p-6">
-              <time :datetime="data.last_updated_at" class="block text-xs text-gray-500"> {{ pubDate(data.last_updated_at) }} </time>
+              <time :datetime="data.last_updated_at" class="block text-xs text-gray-500">
+                {{ pubDate(data.last_updated_at) }}
+              </time>
 
-              <a href="#">
-                <h3 class="mt-0.5 text-lg text-gray-900">{{ data.title }}</h3>
-              </a>
+              <NuxtLink :to="data._path"
+                        :title="data.title">
+                <h3 class="mt-0.5 text-lg text-gray-900">
+                  {{ data.title }}
+                </h3>
+              </NuxtLink>
 
               <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 h-full">
                 {{ data.quotes[0].quote.content }}
               </p>
 
-              <NuxtLink :to="buildLink(data.last_updated_at)"
-                        class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+              <NuxtLink :to="data._path"
+                        :title="data.title"
+                        class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary-600">
                 Read more
                 <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">&rarr;</span>
               </NuxtLink>

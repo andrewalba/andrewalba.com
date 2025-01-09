@@ -38,7 +38,8 @@ const pubDate = (dateStr: string): string => {
                   {{ pubDate(data.last_updated_at) }}
                 </time>
 
-                <NuxtLink :to="data._path">
+                <NuxtLink :to="data._path"
+                          :title="data.title">
                   <h3 class="mt-0.5 text-lg text-gray-900">{{ data.title }}</h3>
                 </NuxtLink>
 
@@ -47,7 +48,8 @@ const pubDate = (dateStr: string): string => {
                 </p>
 
                 <NuxtLink :to="data._path"
-                          class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                          :title="data.title"
+                          class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary-600">
                   Read more
                   <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">&rarr;</span>
                 </NuxtLink>
