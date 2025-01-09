@@ -1,0 +1,12 @@
+<mj-section>
+
+  <mj-column>
+    <mj-text>
+      &copy; 2000 - {{ currentYear }} Andrew Alba
+    </mj-text>
+    <mj-text>
+      Built by Alba Web Studio LLC
+    </mj-text>
+  </mj-column>
+
+</mj-section>

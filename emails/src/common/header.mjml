@@ -1,0 +1,11 @@
+<mj-section>
+
+  <mj-column>
+    <mj-image src="https://d3iwoqnah6ycun.cloudfront.net/logo-dark.svg" align="center" width="300px"/>
+    <mj-spacer height="40px" />
+    <mj-text align="center" color="#86C232" font-size="24px" font-weight="700">
+      Attention Andrew Alba
+    </mj-text>
+  </mj-column>
+
+</mj-section>
