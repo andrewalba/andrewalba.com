@@ -2,7 +2,7 @@
 const emit = defineEmits(['updateClearSuccess'])
 
 const callClearSuccess = () => {
-  emit('updateClearSuccess');
+  emit('updateClearSuccess')
 }
 </script>
 

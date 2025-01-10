@@ -1,30 +1,30 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue'
-import { useSiteData } from "~/composables/useSiteData";
+import { useSiteData } from "~/composables/useSiteData"
 
 const { site } = useSiteData()
-const isDarkMode = shallowRef(false);
-const lightLogo = '/logo-light.svg';
-const darkLogo = '/logo-dark.svg';
+const isDarkMode = shallowRef(false)
+const lightLogo = '/logo-light.svg'
+const darkLogo = '/logo-dark.svg'
 
-const showMenu = shallowRef(false);
-const toggleNav = () => (showMenu.value = !showMenu.value);
+const showMenu = shallowRef(false)
+const toggleNav = () => (showMenu.value = !showMenu.value)
 const checkDarkMode = () => {
   if (typeof window !== 'undefined' && window.matchMedia) {
-    isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
   }
-};
+}
 
 onMounted(() => {
   // Check on mount
-  checkDarkMode();
+  checkDarkMode()
 
   // Listen for changes in system theme
   if (typeof window !== 'undefined' && window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkDarkMode);
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkDarkMode)
   }
-});
-const logoSrc = computed(() => isDarkMode.value ? darkLogo : lightLogo);
+})
+const logoSrc = computed(() => isDarkMode.value ? darkLogo : lightLogo)
 </script>
 
 <template>

@@ -10,7 +10,7 @@ const { data } = await useAsyncData("article", () =>
 
 <template>
   <section id="article-privacy" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
-    <div class="w-full pb-40 pt-20 bg-gray-100 dark:bg-black px-4">
+    <div class="w-full pb-40 pt-20 bg-gray-100 dark:bg-black px-4 sm:px-40">
       <h1 class="text-6xl font-bold text-center text-gray-700 dark:text-white mb-4">{{ data.title }}</h1>
       <p class="text-center text-gray-500 dark:text-gray-300 italic">{{ data.last_updated_at }}</p>
     </div>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 interface Props {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
+  name: string
+  email: string
+  phone: string
+  message: string
 }
 
 defineProps<Props>();
@@ -13,27 +13,27 @@ const emit = defineEmits<{
   (e: 'update:phone', value: string): void
   (e: 'update:message', value: string): void
   (e: 'submit'): void
-}>();
+}>()
 
 const updateName = (event: Event) => {
-  emit('update:name', (event.target as HTMLInputElement).value);
-};
+  emit('update:name', (event.target as HTMLInputElement).value)
+}
 
 const updateEmail = (event: Event) => {
-  emit('update:email', (event.target as HTMLInputElement).value);
-};
+  emit('update:email', (event.target as HTMLInputElement).value)
+}
 
 const updatePhone = (event: Event) => {
-  emit('update:phone', (event.target as HTMLInputElement).value);
-};
+  emit('update:phone', (event.target as HTMLInputElement).value)
+}
 
 const updateMessage = (event: Event) => {
-  emit('update:message', (event.target as HTMLTextAreaElement).value);
-};
+  emit('update:message', (event.target as HTMLTextAreaElement).value)
+}
 
 const submitForm = () => {
-  emit('submit');
-};
+  emit('submit')
+}
 </script>
 
 <template>
