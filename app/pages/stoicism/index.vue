@@ -7,22 +7,42 @@ definePageMeta({
 });
 
 const { stoicism } = useStoicismData()
-const datum: any[] = [];
-let startDate = new Date(new Date().setDate(new Date().getDate()-2))
-const endDate = new Date(new Date().setDate(new Date().getDate()+3))
+//const datum: any[] = [];
+const articleYear = new Date(new Date().setFullYear(2021))
+const startDate = new Date(articleYear.setDate(articleYear.getDate() - 4))
+const endDate = new Date(articleYear.setDate(articleYear.getDate() + 12))
 
-do {
-  const month = startDate.getMonth() + 1;
-  const day = startDate.getDate();
-  const { data } = await useAsyncData("article", () =>
-      queryContent(`/stoicism/${month}/${day}`).findOne()
-  )
-  datum.push(data.value);
-  startDate = new Date(startDate.setDate(startDate.getDate()+1));
-} while (startDate <= endDate)
+const datum = await queryContent('/stoicism')
+    .where({ _path: { $contains: 'stoicism' } })
+    /*.where({ last_updated_at: { $gte: startDate.toISOString() } })
+    .where({ last_updated_at: { $lte: endDate.toISOString() } })*/
+    .find()
+
+/*const redirects = (articles: any) => {
+      const routes: any = {}
+      articles.forEach((article: any) => {
+        const slug = article.title.toLowerCase().replace(/ /g, '-')
+            .replace(/[^\w-]+/g, '')
+        const last_updated_at = new Date(article.last_updated_at)
+        console.log(`last_created_at: `, article.last_updated_at)
+        const month = last_updated_at.getMonth() + 1;
+        const day = last_updated_at.getDate();
+        routes[`/stoicism/${slug}`] = {
+          redirect: {
+              to: `/stoicism/${month}/${day}`,
+              statusCode: 301
+          }
+        }
+      })
+    return routes
+}*/
 
 const pubDate = (dateStr: string): string => {
-  return format(new Date(dateStr), "MMMM do, yyyy"); // "do" adds the ordinal suffix automatically
+  const date = new Date(dateStr)
+  if (isNaN(date.getTime())) {
+    return 'Invalid date' // Return a fallback string if the date is invalid
+  }
+  return format(date, "MMMM do, yyyy")
 }
 </script>
 
