@@ -301,6 +301,12 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
+        "/stoicism/you-do-not-have-to-have-an-opinion": {
+            redirect: {
+                to: "/stoicism/2/9",
+                statusCode: 301
+            }
+        },
         "/stoicism/anger-is-bad-fuel": {
             redirect: {
                 to: "/stoicism/2/10",
@@ -464,6 +470,12 @@ export default defineNuxtConfig({
             }
         },
         "/stoicism/dont-unintentionally-hand-over-your-freedom": {
+            redirect: {
+                to: "/stoicism/3/8",
+                statusCode: 301
+            }
+        },
+        "/stoicism/do-not-unintentionally-hand-over-your-freedom": {
             redirect: {
                 to: "/stoicism/3/8",
                 statusCode: 301
@@ -1303,6 +1315,12 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
+        "/stoicism/what-is-on-your-tombstone": {
+            redirect: {
+                to: "/stoicism/7/25",
+                statusCode: 301
+            }
+        },
         "/stoicism/when-good-men-do-nothing": {
             redirect: {
                 to: "/stoicism/7/26",
@@ -1863,6 +1881,12 @@ export default defineNuxtConfig({
         },
         "/stoicism/we-reap-what-we-sow": {
             redirect: {
+                to: "/stoicism/10/27",
+                statusCode: 301
+            }
+        },
+        "/stoicism/we-were-made-for-each-other": {
+            redirect: {
                 to: "/stoicism/10/28",
                 statusCode: 301
             }
@@ -2248,6 +2272,18 @@ export default defineNuxtConfig({
         "/stoicism/get-active-in-your-own-rescue": {
             redirect: {
                 to: "/stoicism/12/31",
+                statusCode: 301
+            }
+        },
+        "/contact": {
+            redirect: {
+                to: "/#contact",
+                statusCode: 301
+            }
+        },
+        "/about": {
+            redirect: {
+                to: "/#about",
                 statusCode: 301
             }
         }
