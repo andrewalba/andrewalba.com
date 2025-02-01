@@ -9,33 +9,10 @@ definePageMeta({
 const { stoicism } = useStoicismData()
 //const datum: any[] = [];
 const articleYear = new Date(new Date().setFullYear(2021))
-const startDate = new Date(articleYear.setDate(articleYear.getDate() - 4))
-const endDate = new Date(articleYear.setDate(articleYear.getDate() + 12))
 
 const datum = await queryContent('/stoicism')
     .where({ _path: { $contains: 'stoicism' } })
-    /*.where({ last_updated_at: { $gte: startDate.toISOString() } })
-    .where({ last_updated_at: { $lte: endDate.toISOString() } })*/
     .find()
-
-/*const redirects = (articles: any) => {
-      const routes: any = {}
-      articles.forEach((article: any) => {
-        const slug = article.title.toLowerCase().replace(/ /g, '-')
-            .replace(/[^\w-]+/g, '')
-        const last_updated_at = new Date(article.last_updated_at)
-        console.log(`last_created_at: `, article.last_updated_at)
-        const month = last_updated_at.getMonth() + 1;
-        const day = last_updated_at.getDate();
-        routes[`/stoicism/${slug}`] = {
-          redirect: {
-              to: `/stoicism/${month}/${day}`,
-              statusCode: 301
-          }
-        }
-      })
-    return routes
-}*/
 
 const pubDate = (dateStr: string): string => {
   const date = new Date(dateStr)
@@ -48,7 +25,7 @@ const pubDate = (dateStr: string): string => {
 
 <template>
   <section id="article-privacy" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
-    <div class="w-full pb-40 pt-20 bg-primary-600 dark:bg-primary-800 px-4 sm:px-40">
+    <div class="w-full pb-40 pt-20 bg-primary-600 px-4 sm:px-40">
       <h1 class="text-6xl font-bold text-center text-gray-900 dark:text-white mb-4">{{ stoicism.title }}</h1>
       <p class="text-center text-gray-900 dark:text-gray-100 italic">{{ stoicism.description }}</p>
     </div>

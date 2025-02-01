@@ -30,6 +30,34 @@ const andrewalba = {
             900: '#0B1004',
             950: '#000000'
         },
+        copper: {
+            DEFAULT: '#C26E32',
+            50: '#EED2BD',
+            100: '#EAC7AD',
+            200: '#E2B08D',
+            300: '#D99A6C',
+            400: '#D1834C',
+            500: '#C26E32',
+            600: '#955527',
+            700: '#693B1B',
+            800: '#3C2210',
+            900: '#100904',
+            950: '#000000'
+        },
+        boston_blue: {
+            DEFAULT: '#3286C2',
+            50: '#BDDAEE',
+            100: '#ADD1EA',
+            200: '#8DBEE2',
+            300: '#6CACD9',
+            400: '#4C99D1',
+            500: '#3286C2',
+            600: '#276795',
+            700: '#1B4869',
+            800: '#102A3C',
+            900: '#040B10',
+            950: '#000000'
+        },
         shark: {
             DEFAULT: '#222629',
             50: '#76838D',
@@ -96,6 +124,8 @@ export default {
                 crete: andrewalba.colors.crete,
                 nevada: andrewalba.colors.nevada,
                 shark: andrewalba.colors.shark,
+                copper: andrewalba.colors.copper,
+                'boston-blue': andrewalba.colors.boston_blue
             },
         },
         fontFamily: {
