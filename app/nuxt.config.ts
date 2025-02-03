@@ -349,6 +349,12 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
+        "/stoicism/do-not-make-things-harder-than-they-need-to-be": {
+            redirect: {
+                to: "/stoicism/2/16",
+                statusCode: 301
+            }
+        },
         "/stoicism/the-enemy-of-happiness": {
             redirect: {
                 to: "/stoicism/2/17",
@@ -380,6 +386,12 @@ export default defineNuxtConfig({
             }
         },
         "/stoicism/whats-better-left-unsaid": {
+            redirect: {
+                to: "/stoicism/2/22",
+                statusCode: 301
+            }
+        },
+        "/stoicism/what-is-better-left-unsaid": {
             redirect: {
                 to: "/stoicism/2/22",
                 statusCode: 301
@@ -464,6 +476,12 @@ export default defineNuxtConfig({
             }
         },
         "/stoicism/dont-trust-the-senses": {
+            redirect: {
+                to: "/stoicism/3/7",
+                statusCode: 301
+            }
+        },
+        "/stoicism/do-not-trust-the-senses": {
             redirect: {
                 to: "/stoicism/3/7",
                 statusCode: 301
@@ -638,6 +656,12 @@ export default defineNuxtConfig({
             }
         },
         "/stoicism/dont-let-this-go-to-your-head": {
+            redirect: {
+                to: "/stoicism/4/4",
+                statusCode: 301
+            }
+        },
+        "/stoicism/do-not-let-this-go-to-your-head": {
             redirect: {
                 to: "/stoicism/4/4",
                 statusCode: 301
@@ -859,6 +883,12 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
+        "/stoicism/do-not-be-inspired-be-inspirational": {
+            redirect: {
+                to: "/stoicism/5/10",
+                statusCode: 301
+            }
+        },
         "/stoicism/guilt-is-worse-than-jail": {
             redirect: {
                 to: "/stoicism/5/11",
@@ -1009,6 +1039,12 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
+        "/stoicism/this-is-what-we-are-here-for": {
+            redirect: {
+                to: "/stoicism/6/4",
+                statusCode: 301
+            }
+        },
         "/stoicism/blow-your-own-nose": {
             redirect: {
                 to: "/stoicism/6/5",
@@ -1135,6 +1171,12 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
+        "/stoicism/the-wise-do-not-have-problems": {
+            redirect: {
+                to: "/stoicism/6/25",
+                statusCode: 301
+            }
+        },
         "/stoicism/try-the-opposite": {
             redirect: {
                 to: "/stoicism/6/26",
@@ -1190,6 +1232,12 @@ export default defineNuxtConfig({
             }
         },
         "/stoicism/no-one-said-itd-be-easy": {
+            redirect: {
+                to: "/stoicism/7/5",
+                statusCode: 301
+            }
+        },
+        "/stoicism/no-one-said-it-would-be-easy": {
             redirect: {
                 to: "/stoicism/7/5",
                 statusCode: 301
@@ -1261,7 +1309,13 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
-        "/stoicism/dont-abandon-others--or-yourself": {
+        "/stoicism/dont-abandon-others-or-yourself": {
+            redirect: {
+                to: "/stoicism/7/17",
+                statusCode: 301
+            }
+        },
+        "/stoicism/do-not-abandon-others-or-yourself": {
             redirect: {
                 to: "/stoicism/7/17",
                 statusCode: 301
@@ -1525,7 +1579,7 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
-        "/stoicism/want-nothing--have-everything": {
+        "/stoicism/want-nothing-have-everything": {
             redirect: {
                 to: "/stoicism/8/29",
                 statusCode: 301
@@ -1567,13 +1621,19 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
+        "/stoicism/how-can-you-know-if-you-have-never-been-tested": {
+            redirect: {
+                to: "/stoicism/9/4",
+                statusCode: 301
+            }
+        },
         "/stoicism/focus-on-what-is-yours-alone": {
             redirect: {
                 to: "/stoicism/9/5",
                 statusCode: 301
             }
         },
-        "/stoicism/they-can-throw-you-in-chains-but-": {
+        "/stoicism/they-can-throw-you-in-chains-but": {
             redirect: {
                 to: "/stoicism/9/6",
                 statusCode: 301
@@ -2149,6 +2209,12 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
+        "/stoicism/do-not-sell-yourself-to-cheaply": {
+            redirect: {
+                to: "/stoicism/12/10",
+                statusCode: 301
+            }
+        },
         "/stoicism/dignity-and-bravery": {
             redirect: {
                 to: "/stoicism/12/11",
@@ -2239,13 +2305,25 @@ export default defineNuxtConfig({
                 statusCode: 301
             }
         },
-        "/stoicism/life-is-long---if-you-know-how-to-use-it": {
+        "/stoicism/do-not-burn-the-candle-at-both-ends": {
+            redirect: {
+                to: "/stoicism/12/25",
+                statusCode: 301
+            }
+        },
+        "/stoicism/life-is-long-if-you-know-how-to-use-it": {
             redirect: {
                 to: "/stoicism/12/26",
                 statusCode: 301
             }
         },
         "/stoicism/dont-let-your-soul-go-first": {
+            redirect: {
+                to: "/stoicism/12/27",
+                statusCode: 301
+            }
+        },
+        "/stoicism/do-not-let-your-soul-go-first": {
             redirect: {
                 to: "/stoicism/12/27",
                 statusCode: 301
