@@ -49,7 +49,7 @@ const sendContactFormToAndrewAlba = (data) => {
             Source: process.env.SOURCE_EMAIL,
             Template: `andrewalba-contact_${process.env.STAGE}`,
             TemplateData: JSON.stringify(data),
-            ReplyToAddresses: [process.env.REPLY_TO_EMAIL],
+            ReplyToAddresses: [data.email ?? process.env.REPLY_TO_EMAIL],
         })
         .then(function () {
             console.log(`sendContactFormToAndrewAlba email queued: ${JSON.stringify(data)}`)
