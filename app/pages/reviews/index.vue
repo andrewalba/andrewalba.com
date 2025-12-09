@@ -35,14 +35,14 @@ useHead({
       <template v-for="item in navigation" :key="item._path">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <template v-for="data in item.children" :key="data._path">
-            <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+            <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg flex flex-col h-full">
               <img
                   :alt="data.description"
                   :src="data.backgroundImage"
                   class="h-56 w-full object-cover"
               />
 
-              <div class="bg-white p-4 sm:p-6">
+              <div class="bg-white p-4 sm:p-6 flex flex-col flex-1">
                 <time :datetime="data.last_updated_at" class="block text-xs text-gray-500">
                   {{ pubDate(data.last_updated_at) }}
                 </time>
@@ -52,7 +52,7 @@ useHead({
                   <h3 class="mt-0.5 text-lg text-gray-900">{{ data.title }}</h3>
                 </NuxtLink>
 
-                <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 h-full">
+                <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 flex-1">
                   {{ data.description }}
                 </p>
 
