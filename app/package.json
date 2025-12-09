@@ -11,6 +11,7 @@
     "dev": "netlify dev",
     "nuxt-dev": "nuxt dev",
     "generate": "nuxt generate",
+    "start": "nuxt start",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

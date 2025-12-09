@@ -37,7 +37,7 @@ const submitForm = () => {
 </script>
 
 <template>
-  <form @submit.prevent="submitForm" class="space-y-4">
+  <form @submit.prevent="submitForm" class="space-y-4 text-black">
     <div>
       <label class="sr-only" for="name">Name</label>
       <input
