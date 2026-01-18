@@ -7,7 +7,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "build",
+    "build": "nuxt build",
     "dev": "dlx wrangler pages dev dist/",
     "nuxt-dev": "nuxt dev",
     "generate": "nuxt generate",
