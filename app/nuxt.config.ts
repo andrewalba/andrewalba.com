@@ -21,6 +21,11 @@ export default defineNuxtConfig({
         server: {
             host: '0.0.0.0',
             port: process.env.PORT ? Number(process.env.PORT) : 3029
+        },
+        preset: "cloudflare_module",
+        cloudflare: {
+            deployConfig: true,
+            nodeCompat: true
         }
     },
     svgo: {
