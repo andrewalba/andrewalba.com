@@ -1,7 +1,7 @@
 {
   "name": "email",
   "version": "1.0.0",
-  "description": "Email templates for the Haunted Farm project",
+  "description": "Email templates for Andrew Alba project",
   "engines": {
     "node": ">=20.12.0",
     "npm": ">=9.6.0"
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/albawebstudio/hauntedfarm-nuxt.git"
+    "url": "https://github.com/andrewalba/andrewalba.com.git"
   },
   "private": true,
   "devDependencies": {
