@@ -1,4 +1,4 @@
-# Haunted Farm / MJML 
+# Andrew Alba / MJML 
 
 Look at the [MJML Responsive Email Framework](https://mjml.io/) to learn more.
 

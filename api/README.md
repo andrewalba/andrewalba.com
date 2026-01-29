@@ -1,4 +1,4 @@
-# Haunted Farm / AWS Serverless API
+# Andrew Alba / AWS Serverless API
 
 Look at the [Serverless](https://www.serverless.com/framework/docs) to learn more.
 
