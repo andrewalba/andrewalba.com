@@ -3,6 +3,7 @@ interface Props {
   name: string
   email: string
   phone: string
+  mobile: string
   message: string
 }
 
@@ -11,6 +12,7 @@ const emit = defineEmits<{
   (e: 'update:name', value: string): void
   (e: 'update:email', value: string): void
   (e: 'update:phone', value: string): void
+  (e: 'update:mobile', value: string): void
   (e: 'update:message', value: string): void
   (e: 'submit'): void
 }>()
@@ -25,6 +27,10 @@ const updateEmail = (event: Event) => {
 
 const updatePhone = (event: Event) => {
   emit('update:phone', (event.target as HTMLInputElement).value)
+}
+
+const updateMobile = (event: Event) => {
+  emit('update:mobile', (event.target as HTMLInputElement).value)
 }
 
 const updateMessage = (event: Event) => {
@@ -74,6 +80,24 @@ const submitForm = () => {
             id="phone"
         />
       </div>
+
+      <div class="form__alt" aria-hidden="true">
+        <label for="mobile">Mobil</label>
+        <input
+            :value="mobile ?? ''"
+            @input="updateMobile"
+            type="tel"
+            name="mobile"
+            id="mobile"
+            tabindex="-1"
+            autocomplete="off"
+            data-1p-ignore
+            data-lpignore="true"
+            data-bwignore
+            data-form-type="other"
+            data-protonpass-ignore
+        />
+      </div>
     </div>
 
     <div>
@@ -101,5 +125,11 @@ const submitForm = () => {
 </template>
 
 <style scoped>
-
+.form__alt {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 </style>

@@ -28,9 +28,10 @@ export default defineNuxtConfig({
         defaultImport: 'component',
     },
     runtimeConfig: {
+        apiUrl: process.env.API_URL,
         public: {
             siteUrl: process.env.SITE_URL ?? 'https://andrewalba.com',
-            apiUrl: process.env.API_URL,
+            honeypotThreshold: process.env.HONEYPOT_THRESHOLD ?? "5",
         }
     },
     security: {
