@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 import { useContactData } from "~/composables/useContactData"
+import { differenceInSeconds } from "date-fns"
 import ContactForm from "~/components/common/ContactForm.vue"
 import Spinner from "~/components/common/Spinner.vue"
 import Success from "~/components/common/Success.vue"
+import type {ContactFormResponse} from "~/models/types/contact-form-response";
 
 const { contact } = useContactData()
 
@@ -11,6 +13,8 @@ interface FormData {
   name: string,
   email: string,
   phone: string,
+  mobile: string,
+  form_time: Date | string,
   message: string,
 }
 
@@ -18,12 +22,14 @@ const showSpinner = shallowRef(false)
 const showSuccess = shallowRef(false)
 const showForm = computed(() => !showSuccess.value && !showSpinner.value)
 const runtimeConfig = useRuntimeConfig()
-const apiUrl = runtimeConfig.public.apiUrl
+const honeypotThreshold = runtimeConfig.public.honeypotThreshold
 
 const getInitialFormData = (): FormData => ({
   name: "",
   email: "",
   phone: "",
+  mobile: "",
+  form_time: new Date(),
   message: "",
 })
 
@@ -48,12 +54,20 @@ const submitForm = async () => {
     return
   }
   try{
-    const response = await fetch(`${apiUrl}/contact-form`, {
-      method: "POST",
-      body: JSON.stringify(form.value),
-    } )
-    if (!response.ok) {
-      throw new Error('Failed to submit form')
+    const formData = form.value
+    const submissionDT = new Date()
+    const isOutsideThreshold = differenceInSeconds(submissionDT, formData.form_time) > parseInt(honeypotThreshold, 10)
+
+    if (formData.mobile === '' && isOutsideThreshold) {
+      const {mobile, form_time, ...contactForm} = formData
+      const contactFormResponse = await useApi<ContactFormResponse>('/api/contact-form', {
+        method: 'POST',
+        body: contactForm,
+      })
+
+      if (!contactFormResponse.success) {
+        throw new Error('Failed to submit form')
+      }
     }
     resetForm()
     showSpinner.value = false
@@ -95,6 +109,7 @@ const clearSuccess = () => {
               v-model:name.trim="form.name"
               v-model:email.trim="form.email"
               v-model:phone.trim="form.phone"
+              v-model:mobile.trim="form.mobile"
               v-model:message.trim="form.message"
               @submit="submitForm"
           />

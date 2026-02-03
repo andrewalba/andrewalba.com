@@ -1,6 +1,6 @@
 import type {
     Address
-} from '~/models/common'
+} from '~/app/models/common'
 
 
 export interface Contact {
