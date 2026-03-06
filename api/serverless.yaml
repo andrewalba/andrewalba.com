@@ -16,8 +16,7 @@ provider:
   profile: ${self:custom.profiles.${opt:stage, self:provider.stage, 'development'}}
   stage: ${opt:stage, 'development'}
   runtime: nodejs22.x
-  apiGateway:
-    endpointType: REGIONAL
+  endpointType: REGIONAL
   iam:
     role: arn:aws:iam::253548989411:role/andrewalba-api
 
