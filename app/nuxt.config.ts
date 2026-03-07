@@ -20,6 +20,10 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
     css: ['~/assets/css/main.css'],
+    sourcemap: {
+        server: process.env.NODE_ENV !== 'production',
+        client: process.env.NODE_ENV !== 'production'
+    },
     ui: {
         theme: {
             colors: ['crete', 'atlantis', 'copper', 'boston-blue', 'shark','abbey','nevada'],
@@ -57,8 +61,6 @@ export default defineNuxtConfig({
                 'img-src': [
                     "'self'",
                     "data:",
-                    "https://maps.gstatic.com/",
-                    "https://d3iwoqnah6ycun.cloudfront.net/",
                 ],
                 'script-src': [
                     "'self'",
