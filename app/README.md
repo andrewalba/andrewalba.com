@@ -140,13 +140,13 @@ compatibility_date = "2025-07-15"
 [[d1_databases]]
 binding = "DB"
 database_name = "content-db"
-database_id = "PRODUCTION_DB_ID"
+database_id = "DB_ID"
 ```
 
-Add `APP_NAME` and `PRODUCTION_DB_ID` values to your `.env` file, 
-with the applicaton name and real ID from the create command.
+Replace the `DB_ID` with the actual `database_id` value returned from the create command.
 
-Important
+#### Important
+
 The binding name must be exactly:
 ``` toml
 binding = "DB"
