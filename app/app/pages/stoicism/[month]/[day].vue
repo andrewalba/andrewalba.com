@@ -1,46 +1,80 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
-
-definePageMeta({
-  layout: "default",
-})
 const route = useRoute()
-const { month, day } = route.params
 
-const { data } = await useAsyncData("article", () =>
-    queryContent(`/stoicism/${month}/${day}`).findOne()
-)
+type Quote = {
+  content?: string
+  author?: string
+  source?: string
+}
 
-const pubDate = (dateStr: string): string => {
+type StoicismQuoteItem = {
+  quote?: Quote
+}
+
+type StoicismMeta = {
+  backgroundImage?: string
+  last_updated_at?: string
+  quotes?: StoicismQuoteItem[]
+}
+
+type StoicismArticle = {
+  path: string
+  stem: string
+  title?: string
+  description?: string
+  meta: StoicismMeta
+  body?: unknown
+}
+
+const slug = computed(() => String(route.params.month || '') + "/" + String(route.params.day || ''))
+
+const pubDate = (dateStr?: string): string => {
+  if (!dateStr) return '';
   return format(new Date(dateStr), "MMMM do, yyyy")
 }
 
+const { data: article } = await useAsyncData<StoicismArticle | null>(
+    () => `stoicism-article-${slug.value}`,
+    () =>
+        queryCollection('stoicism')
+            .select('path', 'stem', 'title', 'description', 'meta', 'body')
+            .where('stem', '=', `stoicism/${slug.value}`)
+            .first()
+);
+
+if (!article.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Stoicism article not found' })
+}
+
+const meta = computed(() => article.value?.meta as StoicismMeta | undefined)
+
 useHead({
-  title: data.value.title,
+  title: article.value.title,
 })
 </script>
 
 <template>
-  <section id="article-privacy" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
-    <div class="w-full pb-40 pt-20 bg-primary-600 px-4 sm:px-40 bg-local bg-no-repeat bg-center bg-blend-multiply" :style="'background-image: url(' + data.backgroundImage + ')'">
-      <h1 class="text-6xl font-bold text-center text-gray-400 dark:text-white mb-4">{{ data.title }}</h1>
-      <p class="text-center text-gray-400 dark:text-gray-100 italic">{{ pubDate(data.last_updated_at) }}</p>
+  <section id="article-stoicism" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
+    <div class="w-full pb-40 pt-20 bg-primary-600 px-4 sm:px-40 bg-local bg-no-repeat bg-center bg-blend-multiply" :style="'background-image: url(' + meta?.backgroundImage + ')'">
+      <h1 class="text-6xl font-bold text-center text-gray-400 dark:text-white mb-4">{{ article?.title }}</h1>
+      <p class="text-center text-gray-400 dark:text-gray-100 italic">{{ pubDate(meta?.last_updated_at) }}</p>
     </div>
     <div class="bg-white w-full sm:max-w-7xl dark:bg-gray-800 text-gray-700 dark:text-gray-100 rounded-3xl flex flex-col items-center shadow-md -mt-20 mx-auto p-10 gap-10">
-      <template v-for="quote in data.quotes">
+      <template v-for="quote in meta?.quotes" :key="`${quote.quote?.author}-${quote.quote?.source}-${quote.quote?.content}`">
         <div
             class="block w-full sm:w-3/4 rounded-xl bg-white dark:bg-gray-800 text-left text-surface dark:text-white border-dotted border-2 border-gray-400">
           <div class="p-6">
             <p class="mb-0 mt-0 text-base font-extralight leading-relaxed italic">
-              {{ quote.quote.content }}
+              {{ quote.quote?.content }}
             </p>
             <footer class="mt-4 block text-neutral-600 dark:text-neutral-400">
-              - <strong>{{ quote.quote.author }}</strong> in <cite>{{ quote.quote.source }}</cite>
+              - <strong>{{ quote.quote?.author }}</strong> in <cite>{{ quote.quote?.source }}</cite>
             </footer>
           </div>
         </div>
       </template>
-      <ContentDoc :value="data" class="prose prose-sm sm:prose-base dark:prose-invert max-w-none" />
+      <ContentRenderer v-if="article" :value="article" class="prose prose-sm sm:prose-base dark:prose-invert max-w-none" />
     </div>
   </section>
 </template>

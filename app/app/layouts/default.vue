@@ -54,11 +54,11 @@ useHead({
 </script>
 
 <template>
-  <div>
+  <UApp>
     <CommonNavigation />
     <slot></slot>
     <CommonFooter />
-  </div>
+  </UApp>
 </template>
 
 <style scoped>
