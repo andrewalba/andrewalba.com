@@ -20,6 +20,11 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
     css: ['~/assets/css/main.css'],
+    vite: {
+        build: {
+            target: 'es2020',
+        },
+    },
     sourcemap: {
         server: process.env.NODE_ENV !== 'production',
         client: process.env.NODE_ENV !== 'production'
@@ -66,7 +71,8 @@ export default defineNuxtConfig({
                     "'self'",
                     "'unsafe-eval'",  // Required for the QR code library
                     'https:',
-                    "'unsafe-inline'"
+                    "'unsafe-inline'",
+                    "https://static.cloudflareinsights.com/"
                 ],
             }
         },
