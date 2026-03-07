@@ -1,7 +1,7 @@
-name = "andrewalba"
+name = "APP_NAME"
 compatibility_date = "2025-07-15"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "content-db"
-database_id = "89e80c85-6355-4060-b4ec-9df6c9c56d04"
+database_id = "PRODUCTION_DB_ID"
