@@ -1,31 +1,54 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
-
-definePageMeta({
-  layout: "default",
-});
 const route = useRoute();
-const { data } = await useAsyncData("article", () =>
-    queryContent(`/reviews/${route.params.slug}`).findOne()
+
+type ReviewMeta = {
+  backgroundImage?: string
+  last_updated_at?: string
+}
+
+type ReviewArticle = {
+  path: string
+  stem: string
+  title?: string
+  description?: string
+  meta?: ReviewMeta
+  body?: unknown
+}
+
+const slug = computed(() => String(route.params.slug || ''))
+
+const { data: article } = await useAsyncData<ReviewArticle | null>(
+    () => `reviews-article-${slug.value}`,
+    () =>
+        queryCollection('reviews')
+            .select('path', 'stem', 'title', 'description', 'meta', 'body')
+            .where('stem', '=', `reviews/${slug.value}`)
+            .first()
 )
 
-const pubDate = (dateStr: string): string => {
+if (!article.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Review post not found' })
+}
+
+const pubDate = (dateStr?: string): string => {
+  if (!dateStr) return '';
   return format(new Date(dateStr), "MMMM do, yyyy"); // "do" adds the ordinal suffix automatically
 }
 
 useHead({
-  title: data.value.title,
+  title: article.value.title,
 })
 </script>
 
 <template>
-  <section id="article-privacy" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
-    <div class="w-full pb-40 pt-20 bg-copper px-4 sm:px-40 bg-local bg-no-repeat bg-center" :style="'background-image: url(' + data.backgroundImage + ')'">
-      <h1 class="text-6xl font-bold text-center text-gray-900 dark:text-white mb-4 px-6">{{ data.title }}</h1>
+  <section id="article-review" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
+    <div class="w-full pb-40 pt-20 bg-copper px-4 sm:px-40 bg-local bg-no-repeat bg-center" :style="'background-image: url(' + article?.meta?.backgroundImage + ')'">
+      <h1 class="text-6xl font-bold text-center text-gray-900 dark:text-white mb-4 px-6">{{ article?.title }}</h1>
     </div>
     <div class="bg-white w-full sm:max-w-7xl dark:bg-gray-800 text-gray-700 dark:text-gray-100 rounded-3xl flex flex-col items-center shadow-md -mt-20 mx-auto p-10 gap-10">
-      <p class="text-center text-gray-700 dark:text-gray-100 italic">{{ pubDate(data.last_updated_at) }}</p>
-      <ContentDoc :value="data" class="prose prose-sm sm:prose-base dark:prose-invert max-w-none" />
+      <p class="text-center text-gray-700 dark:text-gray-100 italic">{{ pubDate(article?.meta?.last_updated_at) }}</p>
+      <ContentRenderer v-if="article" :value="article" class="prose prose-sm sm:prose-base dark:prose-invert max-w-none" />
     </div>
   </section>
 </template>

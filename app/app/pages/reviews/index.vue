@@ -6,10 +6,27 @@ definePageMeta({
   layout: "default",
 })
 
-const { review } = useReviewData()
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation('/reviews'))
+type ReviewMeta = {
+  backgroundImage?: string
+  last_updated_at?: string
+}
 
-const pubDate = (dateStr: string): string => {
+type ReviewListItem = {
+  path: string
+  title?: string
+  description?: string
+  meta?: ReviewMeta
+}
+
+const { review } = useReviewData()
+const { data: reviews } = await useAsyncData<ReviewListItem[]>('reviews', () =>
+    queryCollection('reviews')
+        .select('path', 'title', 'description', 'meta')
+        .all()
+)
+
+const pubDate = (dateStr?: string): string => {
+  if (!dateStr) return '';
   return format(new Date(dateStr), "MMMM do, yyyy"); // "do" adds the ordinal suffix automatically
 }
 
@@ -25,29 +42,28 @@ useHead({
 </script>
 
 <template>
-  <section id="article-privacy" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
+  <section id="article-reviews" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
     <div class="w-full pb-40 pt-20 bg-copper px-4 sm:px-40">
       <h1 class="text-6xl font-bold text-center text-gray-900 dark:text-white mb-4">{{ review.title }}</h1>
       <p class="text-center text-gray-00 dark:text-gray-100 italic">{{ review.description }}</p>
     </div>
     <div
         class="bg-white w-full sm:max-w-7xl dark:bg-gray-800 text-gray-700 dark:text-gray-100 rounded-3xl flex flex-col items-center shadow-md -mt-20 mx-auto p-10 gap-10">
-      <template v-for="item in navigation" :key="item._path">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <template v-for="data in item.children" :key="data._path">
+          <template v-for="data in reviews" :key="data.path">
             <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg flex flex-col h-full">
               <img
                   :alt="data.description"
-                  :src="data.backgroundImage"
+                  :src="data.meta?.backgroundImage"
                   class="h-56 w-full object-cover"
               />
 
               <div class="bg-white p-4 sm:p-6 flex flex-col flex-1">
-                <time :datetime="data.last_updated_at" class="block text-xs text-gray-500">
-                  {{ pubDate(data.last_updated_at) }}
+                <time :datetime="data.meta?.last_updated_at" class="block text-xs text-gray-500">
+                  {{ pubDate(data.meta?.last_updated_at) }}
                 </time>
 
-                <NuxtLink :to="data._path"
+                <NuxtLink :to="data.path"
                           :title="data.title">
                   <h3 class="mt-0.5 text-lg text-gray-900">{{ data.title }}</h3>
                 </NuxtLink>
@@ -56,7 +72,7 @@ useHead({
                   {{ data.description }}
                 </p>
 
-                <NuxtLink :to="data._path"
+                <NuxtLink :to="data.path"
                           :title="data.title"
                           class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary-600">
                   Read more
@@ -66,7 +82,6 @@ useHead({
             </article>
           </template>
         </div>
-      </template>
     </div>
   </section>
 </template>
