@@ -66,6 +66,7 @@ export default defineNuxtConfig({
                 'img-src': [
                     "'self'",
                     "data:",
+                    "https://d3iwoqnah6ycun.cloudfront.net/",
                 ],
                 'script-src': [
                     "'self'",
