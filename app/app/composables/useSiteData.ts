@@ -12,13 +12,24 @@ import type { Site } from '~/models/site'
 export function useSiteData() {
     const runtimeConfig = useRuntimeConfig()
     const siteUrl = runtimeConfig.public.siteUrl
-    const address = ref<Address> ({
-        street1: "",
-        street2: null,
-        city: "Apple Valley",
-        state: "MN",
-        postal_code: "55124"
-    });
+    const addresses = ref<Address[]> ([
+        {
+            label: "personal",
+            street1: "",
+            street2: null,
+            city: "Apple Valley",
+            state: "MN",
+            postal_code: "55124"
+        },
+        {
+            label: "legal",
+            street1: "202 N Cedar Ave",
+            street2: "Suite #1",
+            city: "Owatonna",
+            state: "MN",
+            postal_code: "55060",
+        }
+    ]);
     const emails = ref<Email[]> ([
         {
             display_name: "Support",
@@ -163,7 +174,7 @@ export function useSiteData() {
         siteUrl: siteUrl as string,
         established: 1971,
         copyright: 2020,
-        address: address.value,
+        addresses: addresses.value,
         phone: phone.value,
         emails: emails.value,
         links: links.value,
@@ -176,13 +187,18 @@ export function useSiteData() {
         return emails.value.find(email => email.account === account) || null;
     });
 
+    const getAddressByLabel = (label: string) => computed(() => {
+        return addresses.value.find(address => address.label === label) || null;
+    });
+
     return {
-        address,
+        addresses,
         emails,
         phone,
         links,
         social_links,
         site,
-        getEmailByAccount
+        getEmailByAccount,
+        getAddressByLabel
     }
 }

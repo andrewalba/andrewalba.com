@@ -5,7 +5,7 @@ import type {
     Email,
     Link,
     SocialLink
-} from '~/app/models/common'
+} from '~/models/common'
 
 
 export interface Site {
@@ -16,7 +16,7 @@ export interface Site {
     siteUrl:      string;
     established:  number;
     copyright:    number;
-    address:      Address;
+    addresses:    Address[];
     phone:        Phone;
     emails:       Email[];
     links:        Link[];

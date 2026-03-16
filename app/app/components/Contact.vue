@@ -1,13 +1,18 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue'
+import {computed, shallowRef} from 'vue'
 import { useContactData } from "~/composables/useContactData"
+import { useSiteData } from "~/composables/useSiteData"
 import { differenceInSeconds } from "date-fns"
 import ContactForm from "~/components/common/ContactForm.vue"
 import Spinner from "~/components/common/Spinner.vue"
 import Success from "~/components/common/Success.vue"
 import type {ContactFormResponse} from "~/models/types/contact-form-response";
 
+import type { Address } from '~/models/common'
+
+
 const { contact } = useContactData()
+const { getAddressByLabel } = useSiteData()
 
 interface FormData {
   name: string,
@@ -81,6 +86,15 @@ const clearSuccess = () => {
   resetForm()
   showSuccess.value=false
 }
+const address = computed<Address>(() => {
+  const value = getAddressByLabel("personal").value
+
+  if (!value) {
+    throw new Error('Address with label "personal" was not found')
+  }
+
+  return value
+})
 </script>
 
 <template>
@@ -96,7 +110,7 @@ const clearSuccess = () => {
           </template>
 
           <div class="mt-8">
-            <address class="mt-2 not-italic">{{ contact.address.city }}, {{ contact.address.state }} {{ contact.address.postal_code }}</address>
+            <address class="mt-2 not-italic">{{ address.city }}, {{ address.state }} {{ address.postal_code }}</address>
           </div>
         </div>
 

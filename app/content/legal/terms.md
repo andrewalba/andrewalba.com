@@ -211,8 +211,9 @@ e. **Address for Designated Agent**
 Please contact our Designated Agent to Receive Notification of Claimed Infringement at the following address:
 
 Copyright Agent, Alba Web Studio LLC  
-13352 Eveleth Way  
-Apple Valley, MN 55124  
+202 N Cedar Ave, 
+Suite #1, 
+Owatonna, MN 55060  
 Phone: [(612) 440-6349](tel:+16124406349)  
 Email: [terms@andrewalba.com](mailto:terms@andrewalba.com)  
 
