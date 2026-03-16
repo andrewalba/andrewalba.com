@@ -247,8 +247,7 @@ The Federal Trade Commission also has a complaint hotline that can be reached by
 ### Additional questions
 
 Any additional questions regarding our privacy policy can be asked via email by sending a message to
-privacy@andrewalba.com. You may also contact us via post mail at: 13352 Eveleth Way, Apple Valley,
-MN 55124.
+privacy@andrewalba.com. You may also contact us via post mail at: 202 N Cedar Ave, Suite #1, Owatonna, MN 55060.
 
 ## California Privacy Rights
 
