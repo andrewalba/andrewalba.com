@@ -29,27 +29,3 @@ This is the personal website of professional software engineer Andrew Alba.
 ## Setup
 
 Each folder should have its own README.md file with instruction for installing.
-
-## Fetch ENV vars
-
-```shell
-aws ssm get-parameter --region us-east-1 \
-	--name /andrewalba/app/.env.<envrironment> \
-	--profile default \
-	--query Parameter.Value \
-	--with-decryption \
-	--output text > ./.env.<envrironment>
-```
-
-If you need to make changes to the file, be sure to push the changes back to AWS. You can modify this command to push a
-new revision to AWS SSM.
-
-```shell
-aws ssm put-parameter \
-    --region us-east-1 \
-    --name /andrewalba/app/.env.<enviornment> \
-    --profile default \
-    --value file://.env.<enviornment> \
---type "SecureString" \
---overwrite
-```
