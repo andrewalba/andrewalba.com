@@ -22,6 +22,7 @@ interface FormData {
   form_time: Date | string,
   messageBody: string,
   subject?: string,
+  formType: string,
 }
 
 const showSpinner = shallowRef(false)
@@ -37,6 +38,8 @@ const getInitialFormData = (): FormData => ({
   mobile: "",
   form_time: new Date(),
   messageBody: "",
+  subject: "General Inquiry",
+  formType: "message",
 })
 
 const form = ref<FormData>(getInitialFormData())
@@ -66,7 +69,6 @@ const submitForm = async () => {
 
     if (formData.mobile === '' && isOutsideThreshold) {
       const {mobile, form_time, ...contactForm} = formData
-      contactForm.subject = 'General Inquiry';
       const contactFormResponse = await useApi<ContactFormResponse>('/api/contact-form', {
         method: 'POST',
         body: contactForm,
