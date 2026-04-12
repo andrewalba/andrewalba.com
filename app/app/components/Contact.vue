@@ -20,7 +20,8 @@ interface FormData {
   phone: string,
   mobile: string,
   form_time: Date | string,
-  message: string,
+  messageBody: string,
+  subject?: string,
 }
 
 const showSpinner = shallowRef(false)
@@ -35,7 +36,7 @@ const getInitialFormData = (): FormData => ({
   phone: "",
   mobile: "",
   form_time: new Date(),
-  message: "",
+  messageBody: "",
 })
 
 const form = ref<FormData>(getInitialFormData())
@@ -48,7 +49,7 @@ const isFormValid = computed(() => {
   return form.value.name.trim() &&
       (form.value.email.trim() ||
       form.value.phone.trim()) &&
-      form.value.message.trim()
+      form.value.messageBody.trim()
 })
 
 const submitForm = async () => {
@@ -65,6 +66,7 @@ const submitForm = async () => {
 
     if (formData.mobile === '' && isOutsideThreshold) {
       const {mobile, form_time, ...contactForm} = formData
+      contactForm.subject = 'General Inquiry';
       const contactFormResponse = await useApi<ContactFormResponse>('/api/contact-form', {
         method: 'POST',
         body: contactForm,
@@ -99,7 +101,7 @@ const address = computed<Address>(() => {
 
 <template>
   <section id="contact" class="bg-gray-100 dark:bg-slate-700 text-black dark:text-slate-100">
-    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
         <div class="lg:col-span-2 lg:py-12">
 
@@ -124,7 +126,7 @@ const address = computed<Address>(() => {
               v-model:email.trim="form.email"
               v-model:phone.trim="form.phone"
               v-model:mobile.trim="form.mobile"
-              v-model:message.trim="form.message"
+              v-model:messageBody.trim="form.messageBody"
               @submit="submitForm"
           />
 

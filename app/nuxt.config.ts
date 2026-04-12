@@ -55,6 +55,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         apiUrl: process.env.API_URL,
+        apiKey: process.env.API_KEY,
         public: {
             siteUrl: process.env.SITE_URL ?? 'https://andrewalba.com',
             honeypotThreshold: process.env.HONEYPOT_THRESHOLD ?? "5",

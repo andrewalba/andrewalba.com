@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
         })
     }
 
-    const upstreamUrl = `${config.apiUrl.replace(/\/$/, '')}/contact-form`
+    const upstreamUrl = `${config.apiUrl.replace(/\/$/, '')}`
 
     try {
         // Use raw so we can see upstream status/body if it fails
@@ -24,6 +24,7 @@ export default defineEventHandler(async (event) => {
             headers: {
                 'content-type': 'application/json',
                 'accept': 'application/json',
+                'X-API-Key': config.apiKey
             },
         })
 
