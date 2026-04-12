@@ -1,7 +1,7 @@
 <mj-section>
 
   <mj-column>
-    <mj-image src="https://d3iwoqnah6ycun.cloudfront.net/logo-dark.svg" align="center" width="300px"/>
+    <mj-image src="https://andrewalba.com/logo-dark.svg" align="center" width="300px"/>
     <mj-spacer height="40px" />
   </mj-column>
 
