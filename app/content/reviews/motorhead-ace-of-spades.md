@@ -7,7 +7,7 @@ categories:
     - bourbon
     - straight
 changeFreq: never
-backgroundImage: https://d3iwoqnah6ycun.cloudfront.net/IMG_0123.jpg
+backgroundImage: /IMG_0123.jpg
 ---
 
 Distillery

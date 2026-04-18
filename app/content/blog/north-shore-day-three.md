@@ -8,7 +8,7 @@ categories:
     - camping
     - hiking
 changeFreq: never
-backgroundImage: https://d3iwoqnah6ycun.cloudfront.net/j4w1APXtSGG5xbAnfJ9rnw.jpg
+backgroundImage: /j4w1APXtSGG5xbAnfJ9rnw.jpg
 ---
 
 Our final full day on the North Shore started off wet and breezy. We spent the morning catching up and sipping copious 
@@ -25,7 +25,7 @@ our time we hiked the short distance to the first set of falls. The clouds were 
 light shallow. The cascades of the river were difficult to photograph as the gorge was narrow. Pauline had some 
 anxiety with the wet rock, so we were quick to get on the trail and move north.
 
-![Temperance River gorge](https://d3iwoqnah6ycun.cloudfront.net/3QlAF6XDR8G2a-taYQtw4w.jpg)
+![Temperance River gorge](https://d39jgdsqfegpzc.cloudfront.net/3QlAF6XDR8G2a-taYQtw4w.jpg)
 *Temperance River gorge*
 
 As we moved north, the river widened, so we spent some time hunting for agates. The problem being that neither of us 
@@ -45,14 +45,14 @@ We walked a short way onto the volcanic rock, near the river and spent some time
 water and air churning into a frothy foam. Even with the warm sun, the breeze and moisture gave me a chill. We hit 
 the trail once again taking our time down the steep rock stairs that still had a pattering of water on them.
 
-![Temperance River falls](https://d3iwoqnah6ycun.cloudfront.net/dmQrVvm3Q66y-vkXrJJOsw.jpg)
+![Temperance River falls](https://d39jgdsqfegpzc.cloudfront.net/dmQrVvm3Q66y-vkXrJJOsw.jpg)
 *Temperance River falls*
 
 Once we arrived back at the vehicle, I was done. Belle had done her best to frustrate me. Her plan worked. I wanted 
 nothing to do with the dogs at that point and was happy to head back to the camper to drink a beer and try to reflect 
 on the great hiking and views and less about a dog that thinks she is a tank.
 
-![Belle trying to say she was sorry](https://d3iwoqnah6ycun.cloudfront.net/Xu1DuHctT4C_Az1WyYvDbg.jpg)
+![Belle trying to say she was sorry](https://d39jgdsqfegpzc.cloudfront.net/Xu1DuHctT4C_Az1WyYvDbg.jpg)
 *Belle trying to say she was sorry*
 
 Once we arrived back at the camp site, my day didn't get much better. Pauline took a hike by herself to the lake, while
@@ -66,7 +66,7 @@ black rocky shore line. The sun drifted behind the pines to the west, while we u
 that we could. After watching the sun fade behind the horizon, we just sat quietly enjoying the sounds and sights that
 Lake Superior had to offer for October in the year of 2020.
 
-![October sunset Lake Superior](https://d3iwoqnah6ycun.cloudfront.net/aisR8juVSbWW9TwFBYgNqQ.jpg)
+![October sunset Lake Superior](https://d39jgdsqfegpzc.cloudfront.net/aisR8juVSbWW9TwFBYgNqQ.jpg)
 *October sunset Lake Superior*
 
 We came back to the camp site and Pauline started a fire while I started the grill for our squash and rib-eye. Pauline 

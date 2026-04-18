@@ -9,7 +9,7 @@ categories:
     - camping
     - hiking
 changeFreq: never
-backgroundImage: https://d3iwoqnah6ycun.cloudfront.net/V_W1-ox5T2GorrBLpNicVQ.jpg
+backgroundImage: /V_W1-ox5T2GorrBLpNicVQ.jpg
 ---
 
 A trip to the North Shores has been five years in the making. If it was up to Pauline this trip would have been made

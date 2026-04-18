@@ -6,7 +6,7 @@ categories:
     - whiskey
     - rye
 changeFreq: never
-backgroundImage: https://d3iwoqnah6ycun.cloudfront.net/IMG_7739.jpg
+backgroundImage: /IMG_7739.jpg
 ---
 
 Redemption Rye Whiskey is an attempt at reviving what was once a staple of the pre-prohibition spirits. This straight rye whiskey comes in at 46% alcohol or 92 proof. This particular bottle is labeled batch number 263.
