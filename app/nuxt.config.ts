@@ -34,12 +34,7 @@ export default defineNuxtConfig({
             colors: ['crete', 'atlantis', 'copper', 'boston-blue', 'shark','abbey','nevada'],
         }
     },
-    modules: [
-        '@nuxt/content',
-        'nuxt-security',
-        'nuxt-svgo',
-        '@nuxt/ui'
-    ],
+    modules: ['@nuxt/content', 'nuxt-security', 'nuxt-svgo', '@nuxt/ui', '@nuxt/image'],
     nitro: {
         prerender: {
             ignore: ['/sitemap.xml']
@@ -59,6 +54,7 @@ export default defineNuxtConfig({
         public: {
             siteUrl: process.env.SITE_URL ?? 'https://andrewalba.com',
             honeypotThreshold: process.env.HONEYPOT_THRESHOLD ?? "5",
+            cloudfrontUrl: process.env.CLOUDFRONT_URL ?? ""
         }
     },
     security: {
@@ -67,7 +63,7 @@ export default defineNuxtConfig({
                 'img-src': [
                     "'self'",
                     "data:",
-                    "https://d3iwoqnah6ycun.cloudfront.net/",
+                    "https://d39jgdsqfegpzc.cloudfront.net/",
                 ],
                 'script-src': [
                     "'self'",

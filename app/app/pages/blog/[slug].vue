@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
 
-const route = useRoute();
+const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl
 
 type BlogMeta = {
   backgroundImage?: string
@@ -44,7 +46,7 @@ useHead({
 
 <template>
   <section id="article-blog" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
-    <div class="w-full pb-40 pt-20 bg-boston-blue px-4 sm:px-40 bg-local bg-no-repeat bg-center" :style="'background-image: url(' + article?.meta?.backgroundImage + ')'">
+    <div class="w-full pb-40 pt-20 bg-boston-blue px-4 sm:px-40 bg-local bg-no-repeat bg-center" :style="'background-image: url(' + cloudfrontUrl + article?.meta?.backgroundImage + ')'">
       <h1 class="text-6xl font-bold text-center text-gray-700 dark:text-white mb-4">{{ article?.title }}</h1>
       <p class="text-center text-gray-500 dark:text-gray-300 italic">{{ pubDate(article?.meta?.last_updated_at) }}</p>
     </div>

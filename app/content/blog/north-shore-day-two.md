@@ -9,7 +9,7 @@ categories:
     - camping
     - hiking
 changeFreq: never
-backgroundImage: https://d3iwoqnah6ycun.cloudfront.net/7-z9GkuWSqKowECSzDlTog.jpg
+backgroundImage: /7-z9GkuWSqKowECSzDlTog.jpg
 ---
 
 Having not fully recovered from day one, Pauline was an early riser as she wanted to get a view of the sunrise from 
@@ -24,7 +24,7 @@ light, muting to yellow and finally dark orange around its edges. The jagged sho
 sparkles of twinkling yellows from the few trees clinging to their leaves. Waves crashed down along the rocks with 
 spray shooting into the brisk morning. 
 
-![Sunrise on Lake Superior](https://d3iwoqnah6ycun.cloudfront.net/pbIcCytpQHGYSz6Bhp_Zcw.jpg)
+![Sunrise on Lake Superior](https://d39jgdsqfegpzc.cloudfront.net/pbIcCytpQHGYSz6Bhp_Zcw.jpg)
 *Sunrise on Lake Superior*
 
 We headed back to the camper for coffee and to gather ourselves for the long day ahead at Cascade River State Park. We
@@ -46,7 +46,7 @@ The trail, more washed out at the higher elevation finally gave way to "Lookout 
 the forest and lake below. The sun was out, but the colors had faded from peak fall to hints of winter. We took some 
 time to rest, snack and take in the views. 
 
-![View from atop Lookout Mountain](https://d3iwoqnah6ycun.cloudfront.net/W5Ryy_c7S_OgwUbMy1bDyA.jpg)
+![View from atop Lookout Mountain](https://d39jgdsqfegpzc.cloudfront.net/W5Ryy_c7S_OgwUbMy1bDyA.jpg)
 *View from atop 'Lookout Mountain'*
 
 We headed down the trail begging the dogs not to pull us to our deaths. Everyone was getting tired and eager to get back 
