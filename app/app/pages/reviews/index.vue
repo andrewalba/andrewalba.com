@@ -6,6 +6,9 @@ definePageMeta({
   layout: "default",
 })
 
+const runtimeConfig = useRuntimeConfig()
+const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl
+
 type ReviewMeta = {
   backgroundImage?: string
   last_updated_at?: string
@@ -54,7 +57,7 @@ useHead({
             <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg flex flex-col h-full">
               <img
                   :alt="data.description"
-                  :src="data.meta?.backgroundImage"
+                  :src="cloudfrontUrl + data.meta?.backgroundImage"
                   class="h-56 w-full object-cover"
               />
 
