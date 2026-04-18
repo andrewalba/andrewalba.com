@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
 const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl
 
 type Quote = {
   content?: string
@@ -56,7 +58,7 @@ useHead({
 
 <template>
   <section id="article-stoicism" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
-    <div class="w-full pb-40 pt-20 bg-primary-600 px-4 sm:px-40 bg-local bg-no-repeat bg-center bg-blend-multiply" :style="'background-image: url(' + meta?.backgroundImage + ')'">
+    <div class="w-full pb-40 pt-20 bg-primary-600 px-4 sm:px-40 bg-local bg-no-repeat bg-center bg-blend-multiply" :style="'background-image: url(' + cloudfrontUrl + meta?.backgroundImage + ')'">
       <h1 class="text-6xl font-bold text-center text-gray-400 dark:text-white mb-4">{{ article?.title }}</h1>
       <p class="text-center text-gray-400 dark:text-gray-100 italic">{{ pubDate(meta?.last_updated_at) }}</p>
     </div>

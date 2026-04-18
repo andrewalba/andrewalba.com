@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
-const route = useRoute();
+const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl
 
 type ReviewMeta = {
   backgroundImage?: string
@@ -43,7 +45,7 @@ useHead({
 
 <template>
   <section id="article-review" class="bg-white dark:bg-gray-900 w-full pb-24 mb-0">
-    <div class="w-full pb-40 pt-20 bg-copper px-4 sm:px-40 bg-local bg-no-repeat bg-center" :style="'background-image: url(' + article?.meta?.backgroundImage + ')'">
+    <div class="w-full pb-40 pt-20 bg-copper px-4 sm:px-40 bg-local bg-no-repeat bg-center" :style="'background-image: url(' + cloudfrontUrl + article?.meta?.backgroundImage + ')'">
       <h1 class="text-6xl font-bold text-center text-gray-900 dark:text-white mb-4 px-6">{{ article?.title }}</h1>
     </div>
     <div class="bg-white w-full sm:max-w-7xl dark:bg-gray-800 text-gray-700 dark:text-gray-100 rounded-3xl flex flex-col items-center shadow-md -mt-20 mx-auto p-10 gap-10">
