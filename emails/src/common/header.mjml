@@ -1,8 +1,0 @@
-<mj-section>
-
-  <mj-column>
-    <mj-image src="https://andrewalba.com/logo-dark.png" align="center" width="300px"/>
-    <mj-spacer height="40px" />
-  </mj-column>
-
-</mj-section>

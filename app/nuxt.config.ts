@@ -49,8 +49,6 @@ export default defineNuxtConfig({
         defaultImport: 'component',
     },
     runtimeConfig: {
-        apiUrl: process.env.API_URL,
-        apiKey: process.env.API_KEY,
         resendApiKey: process.env.RESEND_API_KEY,
         public: {
             siteUrl: process.env.SITE_URL ?? 'https://andrewalba.com',
