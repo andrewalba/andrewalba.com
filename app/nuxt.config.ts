@@ -51,10 +51,12 @@ export default defineNuxtConfig({
     runtimeConfig: {
         apiUrl: process.env.API_URL,
         apiKey: process.env.API_KEY,
+        resendApiKey: process.env.RESEND_API_KEY,
         public: {
             siteUrl: process.env.SITE_URL ?? 'https://andrewalba.com',
             honeypotThreshold: process.env.HONEYPOT_THRESHOLD ?? "5",
-            cloudfrontUrl: process.env.CLOUDFRONT_URL ?? ""
+            cloudfrontUrl: process.env.CLOUDFRONT_URL ?? "",
+            resendTemplateId: process.env.RESEND_TEMPLATE_ID ?? "48aab08d-a6a0-41c8-8af2-90dc54effcca",
         }
     },
     security: {

@@ -69,7 +69,7 @@ const submitForm = async () => {
 
     if (formData.mobile === '' && isOutsideThreshold) {
       const {mobile, form_time, ...contactForm} = formData
-      const contactFormResponse = await useApi<ContactFormResponse>('/api/contact-form', {
+      const contactFormResponse = await useApi<ContactFormResponse>('/api/send', {
         method: 'POST',
         body: contactForm,
       })
