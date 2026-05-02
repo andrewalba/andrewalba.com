@@ -20,7 +20,7 @@ logs
 .idea
 
 # Local env files
-.env
+.env.local
 .env.*
 !.env.example
 !/content/stoicism/28.md
