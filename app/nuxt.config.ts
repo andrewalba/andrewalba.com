@@ -53,7 +53,6 @@ export default defineNuxtConfig({
         public: {
             siteUrl: process.env.SITE_URL ?? 'https://andrewalba.com',
             honeypotThreshold: process.env.HONEYPOT_THRESHOLD ?? "5",
-            cloudinaryUrl: process.env.CLOUDFRONT_URL ?? "",
             cloudinaryUrl: process.env.CLOUDINARY_URL ?? "",
             resendTemplateId: process.env.RESEND_TEMPLATE_ID ?? "",
         }
