@@ -7,7 +7,7 @@ definePageMeta({
 })
 
 const runtimeConfig = useRuntimeConfig()
-const cloudfrontUrl = runtimeConfig.public.cloudfrontUrl
+const cloudinaryUrl = runtimeConfig.public.cloudinaryUrl
 
 type ReviewMeta = {
   backgroundImage?: string
@@ -57,7 +57,7 @@ useHead({
             <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg flex flex-col h-full">
               <img
                   :alt="data.description"
-                  :src="cloudfrontUrl + data.meta?.backgroundImage"
+                  :src="cloudinaryUrl + data.meta?.backgroundImage"
                   class="h-56 w-full object-cover"
               />
 
