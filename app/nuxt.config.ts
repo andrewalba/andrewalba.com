@@ -53,8 +53,9 @@ export default defineNuxtConfig({
         public: {
             siteUrl: process.env.SITE_URL ?? 'https://andrewalba.com',
             honeypotThreshold: process.env.HONEYPOT_THRESHOLD ?? "5",
-            cloudfrontUrl: process.env.CLOUDFRONT_URL ?? "",
-            resendTemplateId: process.env.RESEND_TEMPLATE_ID ?? "48aab08d-a6a0-41c8-8af2-90dc54effcca",
+            cloudinaryUrl: process.env.CLOUDFRONT_URL ?? "",
+            cloudinaryUrl: process.env.CLOUDINARY_URL ?? "",
+            resendTemplateId: process.env.RESEND_TEMPLATE_ID ?? "",
         }
     },
     security: {
@@ -63,7 +64,7 @@ export default defineNuxtConfig({
                 'img-src': [
                     "'self'",
                     "data:",
-                    "https://d39jgdsqfegpzc.cloudfront.net/",
+                    "https://res.cloudinary.com/",
                 ],
                 'script-src': [
                     "'self'",

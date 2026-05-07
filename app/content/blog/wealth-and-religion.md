@@ -24,7 +24,7 @@ A decade ago, I began to question my belief about financial wealth. My financial
 within a short period. I realized that financial wealth can provide amenities, pleasures, and a sense of security. Does
 financial wealth provide happiness though?
 
-![Manhattan Beach, California Fall 2019](https://d39jgdsqfegpzc.cloudfront.net/wealth-and-religion-manhatten-beach.jpg)
+![Manhattan Beach, California Fall 2019](https://res.cloudinary.com/dldbk7mef/image/upload/v1778121075/wealth-and-religion-manhatten-beach.jpg)
 *Manhattan Beach, California Fall 2019*
 
 Fast-forward to four years ago when this country decides to elect a man who dubiously claims to be financially
@@ -37,7 +37,7 @@ the poor. We are approaching one year of fear and uncertainty for so many, yet m
 policies that protect the fortunes of the wealthy. Fortunes magnified by a pandemic that is eating away at the savings
 and income of so many average Americans.
 
-![Manhattan Beach, California Fall 2019](https://d39jgdsqfegpzc.cloudfront.net/wealth-and-religion-san-gabriel-valley.jpg)
+![Manhattan Beach, California Fall 2019](https://res.cloudinary.com/dldbk7mef/image/upload/v1778121075/wealth-and-religion-san-gabriel-valley.jpg)
 *San Gabriel Valley, North of Azusa, California Fall 2019*
 
 So why as Christians should we be willing to give favor to *the rich*? Better question... what does the bible tell us
