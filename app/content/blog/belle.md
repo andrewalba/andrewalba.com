@@ -6,7 +6,7 @@ categories:
     - reflection
     - dogs
 changeFreq: never
-backgroundImage: https://res.cloudinary.com/dldbk7mef/image/upload/v1790566832/Belle-20190922_fddbqr.jpg
+backgroundImage: /Belle-20190922_fddbqr.jpg
 ---
 
 In the late spring or early summer of 2015, a rescue organization contacted me about a young German Shepherd who needed a home. A few weeks earlier, I had met with the organization’s founders and told them that German Shepherds had become my favorite breed.
