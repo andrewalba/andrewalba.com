@@ -43,33 +43,47 @@ and income of so many average Americans.
 So why as Christians should we be willing to give favor to *the rich*? Better question... what does the bible tell us
 in regard to those who are wealthy?
 
-> No one can serve two masters. Either you will hate the one and love the other, or you will be devoted to
-the one and despise the other. You cannot serve both God and money.
->
-> \- <cite>Matthew 6:24</cite>
+::quote
+---
+quote:
+  body: No one can serve two masters. Either you will hate the one and love the other, or you will be devoted to the one and despise the other. You cannot serve both God and money.
+  source: Matthew 6:24
+---
+::
 
-> Keep your lives free from the love of money and be content with what you have, because God has said,
-'Never will I leave you; never will I forsake you.'
-> 
-> \- <cite>Hebrews 13:5</cite>
+::quote
+---
+quote:
+  body: Keep your lives free from the love of money and be content with what you have, because God has said, 'Never will I leave you; never will I forsake you.'
+  source: Hebrews 13:5
+---
+::
 
 This is one of my favorites. I mentally picture a silly cartoon depicting [this act](http://www.reverendfun.com/toon/20070110/).
 
-> Indeed, it is easier for a camel to go through the eye of a needle than for someone who is rich to enter
-the kingdom of God.
-> 
-> \- <cite>Luke 18:25</cite>
+::quote
+---
+quote:
+  body: Indeed, it is easier for a camel to go through the eye of a needle than for someone who is rich to enter the kingdom of God.
+  source: Luke 18:25
+---
+::
 
-> Command those who are rich in this present world not to be arrogant nor to put their hope in wealth,
-which is so uncertain, but to put their hope in God, who richly provides us with everything for our enjoyment. Command
-them to do good, to be rich in good deeds, and to be generous and willing to share.
-> 
-> \- <cite>1 Timothy 6:17-18</cite>
+::quote
+---
+quote:
+  body: Command those who are rich in this present world not to be arrogant nor to put their hope in wealth, which is so uncertain, but to put their hope in God, who richly provides us with everything for our enjoyment. Command them to do good, to be rich in good deeds, and to be generous and willing to share.
+  source: 1 Timothy 6:17-18
+---
+::
 
-> For the sun rises with scorching heat and withers the plant; its blossom falls and its beauty is
-destroyed. In the same way, the rich will fade away even while they go about their business.
-> 
-> \- <cite>James 1:11</cite>
+::quote
+---
+quote:
+  body: For the sun rises with scorching heat and withers the plant; its blossom falls and its beauty is destroyed. In the same way, the rich will fade away even while they go about their business.
+  source: James 1:11
+---
+::
 
 ### Don't Be Hatin'
 
@@ -99,11 +113,16 @@ on Psalm 72.
 
 Paul the Apostle wrote to the Romans how to handle their relationship between God and the civil government.
 
-> This is also why you pay taxes, for the authorities are God's servants, who give their full time to
-governing. Give to everyone what you owe them: If you owe taxes, pay taxes; if revenue, then revenue; if respect, then
-respect; if honor, then honor.
-> 
-> \- <cite>Romans 13:6-7</cite>
+::quote
+---
+quote:
+  body: >
+    This is also why you pay taxes, for the authorities are God's servants, who give their full time to
+    governing. Give to everyone what you owe them: If you owe taxes, pay taxes; if revenue, then revenue;
+    if respect, then respect; if honor, then honor.
+  source: Romans 13:6-7
+---
+::
 
 ### Conclusion
 
