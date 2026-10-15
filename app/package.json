@@ -10,6 +10,7 @@
     "build": "nuxt build",
     "nuxt-dev": "nuxt dev",
     "wrangler:dev": "nuxt build --dotenv .env.local && wrangler pages dev dist",
+    "dev:cf": "nuxt build && pnpm exec wrangler pages dev dist --compatibility-date=2025-07-15",
     "generate": "nuxt generate",
     "start": "nuxt start",
     "preview": "nuxt preview",

@@ -1,19 +1,14 @@
-import routeRules from './updatedRouteRules.js';
+import redirectRouteRules from './updatedRouteRules.js';
 
-type HTTPStatusCode = 200 | 301 | 302 | 404 | 500;
-
-// Define the interface for the route rules
-interface RouteRule {
-    redirect: {
-        to: string;
-        statusCode: HTTPStatusCode; // Use the correct type for statusCode
-    };
-}
-
-interface RouteRules {
-    [key: string]: RouteRule;
-}
-
+const prerenderRouteRules = {
+    '/': {prerender: true},
+    '/blog/**': {prerender: true},
+    '/stoicism/**': {prerender: true},
+    '/reviews/**': {prerender: true},
+    '/legal/**': {prerender: true},
+    '/sitemap.xml': {prerender: true},
+    '/api/**': {prerender: false},
+} as const;
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -37,7 +32,7 @@ export default defineNuxtConfig({
     modules: ['@nuxt/content', 'nuxt-security', 'nuxt-svgo', '@nuxt/ui', '@nuxt/image'],
     nitro: {
         prerender: {
-            ignore: ['/sitemap.xml']
+            crawlLinks: true,
         },
         preset: "cloudflare_pages",
         cloudflare: {
@@ -75,5 +70,8 @@ export default defineNuxtConfig({
             }
         },
     },
-    routeRules: routeRules as RouteRules
+    routeRules: {
+        ...prerenderRouteRules,
+        ...redirectRouteRules,
+    },
 })

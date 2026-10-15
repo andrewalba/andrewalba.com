@@ -1,46 +1,35 @@
-import { SitemapStream, streamToPromise } from 'sitemap'
-import { dirname, resolve } from 'path'
-import { fileURLToPath } from 'url'
-import fs from 'fs'
+import {SitemapStream, streamToPromise} from 'sitemap'
 
 const BASE_URL = 'https://andrewalba.com'
 
-export default defineEventHandler(async (event) => {
-    const sitemap = new SitemapStream({ hostname: BASE_URL })
+const CONTENT_COLLECTIONS = ['content', 'blog', 'stoicism', 'reviews', 'legal'] as const
 
-    const docs = await queryCollection(event, 'content').all()
-    for (const doc of docs) {
-        sitemap.write({ url: doc.path, changefreq: 'monthly' })
+const STATIC_PATHS = ['/', '/blog', '/stoicism', '/reviews'] as const
+
+const STOICISM_MONTH_SLUGS = [
+    '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12',
+] as const
+
+export default defineEventHandler(async (event) => {
+    const sitemap = new SitemapStream({hostname: BASE_URL})
+
+    for (const collection of CONTENT_COLLECTIONS) {
+        const docs = await queryCollection(event, collection).select('path').all()
+        for (const doc of docs) {
+            if (doc.path) {
+                sitemap.write({url: doc.path, changefreq: 'monthly'})
+            }
+        }
     }
 
-    const staticEndpoints = getStaticEndpoints()
-    for (const staticEndpoint of staticEndpoints) {
-        sitemap.write({ url: staticEndpoint, changefreq: 'monthly' })
+    for (const path of STATIC_PATHS) {
+        sitemap.write({url: path, changefreq: 'monthly'})
+    }
+
+    for (const month of STOICISM_MONTH_SLUGS) {
+        sitemap.write({url: `/stoicism/months/${month}`, changefreq: 'monthly'})
     }
 
     sitemap.end()
     return streamToPromise(sitemap)
 })
-
-function getStaticEndpoints(): (string | undefined)[] {
-    const __dirname = dirname(fileURLToPath(import.meta.url))
-    const files = getFiles(`${__dirname}/../../pages`)
-    return files
-        .filter((file) => !file.includes('slug')) // exclude dynamic content
-        .map((file) => file.split('pages')[1])
-        .map((file) => {
-            return file?.endsWith('index.vue') ? file?.split('/index.vue')[0] : file?.split('.vue')[0]
-        })
-}
-
-/**
- * recursively get all files from /pages folder
- */
-function getFiles(dir: string): string[] {
-    const dirents = fs.readdirSync(dir, { withFileTypes: true })
-    const files = dirents.map((dirent) => {
-        const res = resolve(dir, dirent.name)
-        return dirent.isDirectory() ? getFiles(res) : res
-    })
-    return files.flat()
-}
