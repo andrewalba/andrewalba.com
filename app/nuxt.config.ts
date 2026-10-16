@@ -30,15 +30,42 @@ export default defineNuxtConfig({
         }
     },
     modules: ['@nuxt/content', 'nuxt-security', 'nuxt-svgo', '@nuxt/ui', '@nuxt/image'],
+    content: {
+        // Static hosting: build-time SQLite + browser WASM for client navigation (no D1 on read paths).
+        database: {
+            type: 'sqlite',
+            filename: ':memory:',
+        },
+    },
     nitro: {
         prerender: {
             crawlLinks: true,
         },
-        preset: "cloudflare_pages",
+        preset: 'cloudflare_pages',
         cloudflare: {
             deployConfig: true,
-            nodeCompat: true
-        }
+            nodeCompat: true,
+            pages: {
+                defaultRoutes: false,
+                routes: {
+                    version: 1,
+                    include: ['/api/*'],
+                    exclude: [],
+                },
+            },
+        },
+    },
+    hooks: {
+        'nitro:config'(nitroConfig) {
+            // @nuxt/content's Cloudflare preset forces D1; static deploy uses in-memory SQLite + WASM only.
+            nitroConfig.runtimeConfig ||= {}
+            nitroConfig.runtimeConfig.content ||= {}
+            nitroConfig.runtimeConfig.content.database = {
+                type: 'sqlite',
+                filename: ':memory:',
+            }
+            nitroConfig.runtimeConfig.content.integrityCheck = false
+        },
     },
     svgo: {
         defaultImport: 'component',
