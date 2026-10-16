@@ -1,0 +1,12 @@
+packages:
+  - .
+
+# pnpm 11+ blocks dependency install scripts unless explicitly allowed (strictDepBuilds).
+# Required for Nuxt/Vite/Content native deps on Cloudflare Pages and other CI.
+allowBuilds:
+  '@parcel/watcher': true
+  better-sqlite3: true
+  esbuild: true
+  sharp: true
+  vue-demi: true
+  workerd: true

@@ -8,10 +8,10 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "build:generate": "nuxt generate",
     "nuxt-dev": "nuxt dev",
     "wrangler:dev": "nuxt build --dotenv .env.local && wrangler pages dev dist",
     "dev:cf": "nuxt build && pnpm exec wrangler pages dev dist --compatibility-date=2025-07-15",
-    "generate": "nuxt generate",
     "start": "nuxt start",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -48,17 +48,5 @@
     "sitemap": "^8.0.2",
     "wrangler": "^4.61.1"
   },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "vue-demi"
-    ],
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "better-sqlite3",
-      "esbuild",
-      "sharp",
-      "workerd"
-    ]
-  },
-  "packageManager": "pnpm@10.33.2"
+  "packageManager": "pnpm@11.5.2"
 }

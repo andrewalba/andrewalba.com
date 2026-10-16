@@ -9,7 +9,8 @@ export default defineEventHandler(async (event) => {
 
     const response = await resend.emails.send({
         from: 'Andrew Alba <andrew@hello.andrewalba.com>',
-        to: ['andrew.alba@albawebstudio.com'],
+        to: ['andrew@andrewalba.com'],
+        replyTo: body.email,
         subject: body.subject ?? 'New Contact Form Submission',
         template: {
             id: templateId,
