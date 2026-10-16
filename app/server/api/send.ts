@@ -21,6 +21,7 @@ export default defineEventHandler(async (event) => {
                 messageBody: body.messageBody,
                 subject: body.subject,
                 formType: body.formType,
+                currentYear: new Date().getFullYear(),
             },
         },
     });
