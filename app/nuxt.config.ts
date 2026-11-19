@@ -1,4 +1,5 @@
-import redirectRouteRules from './updatedRouteRules.js';
+import {generateStoicismRedirects} from './scripts/generateStoicismRedirects';
+import {staticRedirectRouteRules} from './scripts/staticRedirectRouteRules';
 
 const prerenderRouteRules = {
     '/': {prerender: true},
@@ -99,6 +100,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
         ...prerenderRouteRules,
-        ...redirectRouteRules,
+        ...generateStoicismRedirects(),
+        ...staticRedirectRouteRules,
     },
 })
