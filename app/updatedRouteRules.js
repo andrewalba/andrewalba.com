@@ -7,7 +7,7 @@ const routeRules = {
     },
     "/stoicism/education-is-freedom": {
         "redirect": {
-            "to": "/stoicism/02/02",
+            "to": "/stoicism/01/02",
             "statusCode": 301
         }
     },
@@ -683,7 +683,7 @@ const routeRules = {
             "statusCode": 301
         }
     },
-    "/stoicism/opinions-are-like-": {
+    "/stoicism/opinions-are-like": {
         "redirect": {
             "to": "/stoicism/04/18",
             "statusCode": 301
@@ -1795,7 +1795,7 @@ const routeRules = {
     },
     "/stoicism/revenge-is-a-dish-best-not-served": {
         "redirect": {
-            "to": "/stoicism/10/NaN",
+            "to": "/stoicism/10/13",
             "statusCode": 301
         }
     },
@@ -2231,7 +2231,7 @@ const routeRules = {
             "statusCode": 301
         }
     },
-    "/stoicism/meaningless--like-a-fine-wine": {
+    "/stoicism/meaningless-like-a-fine-wine": {
         "redirect": {
             "to": "/stoicism/12/24",
             "statusCode": 301
