@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
+import { resolveStoicismEntryNeighbors } from '~/utils/stoicism-entry-neighbors'
+import { isStoicismMonthSlug, STOICISM_MONTHS, stoicismMonthLabel } from '~/utils/stoicism-months'
 
 definePageMeta({
   layout: 'default',
@@ -54,6 +56,65 @@ if (!article.value) {
   throw createError({ statusCode: 404, statusMessage: 'Stoicism article not found' })
 }
 
+const monthSlug = String(route.params.month ?? '')
+const daySlug = String(route.params.day ?? '')
+
+if (!isStoicismMonthSlug(monthSlug)) {
+  throw createError({ statusCode: 404, statusMessage: 'Month not found' })
+}
+
+const monthLabel = stoicismMonthLabel(monthSlug)
+const currentStem = `stoicism/${monthSlug}/${daySlug}`
+
+type StoicismNavEntry = {
+  path: string
+  stem: string
+  title?: string
+}
+
+const loadMonthEntries = (month: string) =>
+    queryCollection('stoicism')
+        .select('path', 'stem', 'title')
+        .where('stem', 'LIKE', `stoicism/${month}/%`)
+        .all() as Promise<StoicismNavEntry[]>
+
+const { data: stoicismNav } = await useAsyncData(
+    () => `stoicism-day-nav-${monthSlug}-${daySlug}`,
+    async () => {
+        const monthEntries = await loadMonthEntries(monthSlug)
+        const sorted = [...monthEntries].sort((a, b) => a.stem.localeCompare(b.stem))
+        const index = sorted.findIndex((entry) => entry.stem === currentStem)
+
+        let previousMonthEntries: StoicismNavEntry[] | undefined
+        let nextMonthEntries: StoicismNavEntry[] | undefined
+        const monthIndex = STOICISM_MONTHS.findIndex((month) => month.slug === monthSlug)
+
+        if (index === 0 && monthIndex > 0) {
+            const previousSlug = STOICISM_MONTHS[monthIndex - 1]?.slug
+            if (previousSlug) {
+                previousMonthEntries = await loadMonthEntries(previousSlug)
+            }
+        }
+
+        if (index === sorted.length - 1 && monthIndex < STOICISM_MONTHS.length - 1) {
+            const nextSlug = STOICISM_MONTHS[monthIndex + 1]?.slug
+            if (nextSlug) {
+                nextMonthEntries = await loadMonthEntries(nextSlug)
+            }
+        }
+
+        return {
+            monthLabel,
+            neighbors: resolveStoicismEntryNeighbors(
+                monthEntries,
+                currentStem,
+                previousMonthEntries,
+                nextMonthEntries,
+            ),
+        }
+    },
+)
+
 const meta = computed(() => article.value?.meta as StoicismMeta | undefined)
 
 useHead({
@@ -82,6 +143,12 @@ useHead({
         </div>
       </template>
       <ContentRenderer v-if="article" :value="article" class="prose prose-sm sm:prose-base dark:prose-invert max-w-none" />
+      <CommonStoicismDayNav
+          v-if="stoicismNav"
+          :month-slug="monthSlug"
+          :month-label="stoicismNav.monthLabel"
+          :neighbors="stoicismNav.neighbors"
+      />
     </div>
   </section>
 </template>

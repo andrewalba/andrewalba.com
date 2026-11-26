@@ -30,7 +30,7 @@ const logoSrc = computed(() => isDarkMode.value ? darkLogo : lightLogo)
 <template>
   <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <NuxtLink :to="site.siteUrl" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <NuxtLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img :src="logoSrc" class="h-8" alt="Andrew Alba logo"/>
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Andrew Alba</span>
       </NuxtLink>
