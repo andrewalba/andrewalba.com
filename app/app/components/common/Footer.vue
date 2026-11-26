@@ -73,7 +73,7 @@ const socialSuffix = computed(() => isDarkMode.value ? '-dark' : '')
         <p>&copy; {{ site.copyright }} - {{ new Date().getFullYear() }} Andrew Alba. All rights reserved.</p>
       </div>
       <div class="flex justify-center text-secondary-700 transition dark:text-secondary-200">
-        <p>Built by <NuxtLink :to="site.built.href" :title="site.built.title" class="text-primary-600">{{ site.built.title}}</NuxtLink></p>
+        <p>Built, hosted, and fueled by caffeine at <NuxtLink :to="site.built.href" :title="site.built.title" class="text-primary-600">{{ site.built.title}}</NuxtLink>.</p>
       </div>
     </div>
   </footer>

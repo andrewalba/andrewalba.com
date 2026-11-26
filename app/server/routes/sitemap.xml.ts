@@ -1,6 +1,11 @@
 import {SitemapStream, streamToPromise} from 'sitemap'
+import {normalizeCanonicalPath} from '../../app/utils/canonical-path'
 
 const BASE_URL = 'https://andrewalba.com'
+
+function sitemapPath(url: string): string {
+    return normalizeCanonicalPath(url)
+}
 
 const CONTENT_COLLECTIONS = ['content', 'blog', 'stoicism', 'reviews', 'legal'] as const
 
@@ -17,17 +22,17 @@ export default defineEventHandler(async (event) => {
         const docs = await queryCollection(event, collection).select('path').all()
         for (const doc of docs) {
             if (doc.path) {
-                sitemap.write({url: doc.path, changefreq: 'monthly'})
+                sitemap.write({url: sitemapPath(doc.path), changefreq: 'monthly'})
             }
         }
     }
 
     for (const path of STATIC_PATHS) {
-        sitemap.write({url: path, changefreq: 'monthly'})
+        sitemap.write({url: sitemapPath(path), changefreq: 'monthly'})
     }
 
     for (const month of STOICISM_MONTH_SLUGS) {
-        sitemap.write({url: `/stoicism/months/${month}`, changefreq: 'monthly'})
+        sitemap.write({url: sitemapPath(`/stoicism/months/${month}`), changefreq: 'monthly'})
     }
 
     sitemap.end()

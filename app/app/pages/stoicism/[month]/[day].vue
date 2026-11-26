@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
+
+definePageMeta({
+  layout: 'default',
+})
+
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const cloudinaryUrl = runtimeConfig.public.cloudinaryUrl

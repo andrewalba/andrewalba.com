@@ -1,4 +1,6 @@
-import {generateStoicismRedirects} from './scripts/generateStoicismRedirects';
+import fs from 'node:fs'
+import path from 'node:path'
+import {generateStoicismRedirects, generateStoicismTrailingSlashRedirectLines} from './scripts/generateStoicismRedirects';
 import {staticRedirectRouteRules} from './scripts/staticRedirectRouteRules';
 
 const prerenderRouteRules = {
@@ -15,6 +17,13 @@ const prerenderRouteRules = {
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
+    experimental: {
+        defaults: {
+            nuxtLink: {
+                trailingSlash: 'append',
+            },
+        },
+    },
     css: ['~/assets/css/main.css'],
     vite: {
         build: {
@@ -57,6 +66,20 @@ export default defineNuxtConfig({
         },
     },
     hooks: {
+        close(nuxt) {
+            const redirectsFile = path.join(nuxt.options.rootDir, 'dist', '_redirects')
+            if (!fs.existsSync(redirectsFile)) {
+                return
+            }
+            const trailingSlashLines = generateStoicismTrailingSlashRedirectLines()
+            if (trailingSlashLines.length === 0) {
+                return
+            }
+            const existing = fs.readFileSync(redirectsFile, 'utf8')
+            if (!existing.includes('/stoicism/01/01\t/stoicism/01/01/\t301')) {
+                fs.appendFileSync(redirectsFile, `\n${trailingSlashLines.join('\n')}\n`)
+            }
+        },
         'nitro:config'(nitroConfig) {
             // @nuxt/content's Cloudflare preset forces D1; static deploy uses in-memory SQLite + WASM only.
             nitroConfig.runtimeConfig ||= {}

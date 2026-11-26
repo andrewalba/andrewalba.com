@@ -62,7 +62,7 @@ export function generateStoicismRedirects(
             }
 
             const day = filename.replace(/\.md$/, '')
-            const target = `/stoicism/${month}/${day}`
+            const target = `/stoicism/${month}/${day}/`
             const markdown = fs.readFileSync(path.join(monthDir, filename), 'utf8')
             const title = parseTitle(markdown)
             if (!title) {
@@ -79,8 +79,33 @@ export function generateStoicismRedirects(
             for (const variant of ellipsisLegacySlugVariants(title, primarySlug)) {
                 register(variant, target)
             }
+
         }
     }
 
     return rules
+}
+
+/** Cloudflare `_redirects` lines: bare MM/DD path → trailing-slash URL (not Nitro routeRules). */
+export function generateStoicismTrailingSlashRedirectLines(
+    stoicismContentDir: string = path.join(APP_ROOT, 'content', 'stoicism'),
+): string[] {
+    const lines: string[] = []
+
+    for (const month of fs.readdirSync(stoicismContentDir)) {
+        const monthDir = path.join(stoicismContentDir, month)
+        if (!fs.statSync(monthDir).isDirectory()) {
+            continue
+        }
+
+        for (const filename of fs.readdirSync(monthDir)) {
+            if (!filename.endsWith('.md')) {
+                continue
+            }
+            const day = filename.replace(/\.md$/, '')
+            lines.push(`/stoicism/${month}/${day}\t/stoicism/${month}/${day}/\t301`)
+        }
+    }
+
+    return lines
 }

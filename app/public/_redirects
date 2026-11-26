@@ -1,0 +1,4 @@
+# Trailing-slash canonical URLs (merged with Nitro-generated stoicism legacy redirects at build)
+/blog	/blog/	301
+/reviews	/reviews/	301
+/stoicism	/stoicism/	301
