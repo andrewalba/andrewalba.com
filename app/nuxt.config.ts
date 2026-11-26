@@ -2,6 +2,10 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {generateStoicismRedirects, generateStoicismTrailingSlashRedirectLines} from './scripts/generateStoicismRedirects';
 import {staticRedirectRouteRules} from './scripts/staticRedirectRouteRules';
+import {
+    formatCloudflareHeadersValidation,
+    validateCloudflareHeadersFile,
+} from './scripts/validateCloudflareHeaders';
 
 const prerenderRouteRules = {
     '/': {prerender: true},
@@ -79,6 +83,12 @@ export default defineNuxtConfig({
             if (!existing.includes('/stoicism/01/01\t/stoicism/01/01/\t301')) {
                 fs.appendFileSync(redirectsFile, `\n${trailingSlashLines.join('\n')}\n`)
             }
+
+            const headersFile = path.join(nuxt.options.rootDir, 'dist', '_headers')
+            const headersCheck = validateCloudflareHeadersFile(headersFile)
+            if (!headersCheck.valid) {
+                throw new Error(formatCloudflareHeadersValidation(headersCheck))
+            }
         },
         'nitro:config'(nitroConfig) {
             // @nuxt/content's Cloudflare preset forces D1; static deploy uses in-memory SQLite + WASM only.
@@ -104,6 +114,11 @@ export default defineNuxtConfig({
         }
     },
     security: {
+        // Per-route headers in dist/_headers (exportToPresets) exceed Cloudflare Pages limits
+        // (100 rules, 2000 chars/line). CSP for prerendered HTML is still applied via ssg meta tags.
+        ssg: {
+            exportToPresets: false,
+        },
         headers: {
             contentSecurityPolicy: {
                 'img-src': [
