@@ -52,6 +52,7 @@ useHead({
     </div>
     <div class="bg-white w-full sm:max-w-7xl dark:bg-gray-800 text-gray-700 dark:text-gray-100 rounded-3xl flex flex-col items-center shadow-md -mt-20 mx-auto p-10 gap-10">
       <ContentRenderer v-if="article" :value="article" class="prose prose-sm sm:prose-base dark:prose-invert max-w-none" />
+      <CommonArticleHubNav index-path="/blog" index-label="All blog posts" />
     </div>
   </section>
 </template>

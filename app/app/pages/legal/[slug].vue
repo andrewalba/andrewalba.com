@@ -28,6 +28,10 @@ const { data: article } = await useAsyncData<LegalArticle | null>(
 if (!article.value) {
   throw createError({ statusCode: 404, statusMessage: 'Legal post not found' })
 }
+
+useSeoMeta({
+  robots: 'noindex, follow',
+})
 </script>
 
 <template>
